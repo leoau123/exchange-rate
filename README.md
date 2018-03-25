@@ -4,7 +4,7 @@ This is AfterShip Git Challenge about Exchange Rate Solution and focus on back-e
 **exchange-rate** is a API server that delivering real-time exchange rate data around 170 counties. The server given mutiple endpoints and serving different use case. Endpoint functionalities include getting exchanged rate date for all or specificed set of currenicies, converting amounts from one currency to another, retrieving time series data for one or multiple currencies.
 
 ## Outstanding
-Due to time limitation, there are lots of fetaure and sercuirty haven't implment and I will list it one by one.
+Due to time limitation, there are lots of fetaure and sercuirty haven't implment and I will list out one by one.
 
 **Feature:**
   - Fluctuation (Provide the rate changes from start date to end date, also providing higest, lowest and average rate between the timeframe)
@@ -50,3 +50,19 @@ Please refer to [API Specification](api-spec.md) page.
 
 ## Error Handling
 Please refer to [Error Handling](errors.md) page.
+
+## Demo
+[Link](https://13.250.39.17/)
+
+## Others
+### Scalability
+I had used cluster with PM2 managment tool to maximize the scalability.
+
+### Secuirty
+Since data is our profits and senitive customer data will be consist, therefore secuirty is a critical part in development process.
+In this project, SSL was applied to prevent man-in-the-middle attack. Moreover, we can also implment a ip whitelist to control which IPs canbe access the API server in order to maximize the secuirty.
+
+In addition, SSL 2 way-auth can be applied for data trasnscation (data write).
+
+## LinkedIn
+[Link](https://www.linkedin.com/in/leo-au-4a855392/)
