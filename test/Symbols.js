@@ -10,30 +10,30 @@ var chai = require('chai'),
 
 chai.use(chaiHttp);
 
-describe('Code', () => {
+describe('Check', () => {
     it('it should "Hong Kong Dollar" correctly', (done) => {
       setTimeout(function(){
         chai.request("https://localhost:3000")
-            .get('/code/HKD')
+            .get('/check/HKD')
             .end((err, res) => {
                 var json = JSON.parse(res.text);
                 res.should.have.status(200);
-                json.symbols.name.should.equal('Hong Kong Dollar');
+                json.symbols['HKD'].should.equal('Hong Kong Dollar');
                 done();
             });
         },1000);
     });
 });
 
-describe('Name', () => {
+describe('Code', () => {
     it('it should "HKD" correctly', (done) => {
       setTimeout(function(){
         chai.request("https://localhost:3000")
-            .get('/name/Hong Kong Dollar')
+            .get('/code/Hong Kong Dollar')
             .end((err, res) => {
                 var json = JSON.parse(res.text);
                 res.should.have.status(200);
-                json.symbols.code.should.equal('HKD');
+                json.symbols['Hong Kong Dollar'].should.equal('HKD');
                 done();
             });
         },1000);

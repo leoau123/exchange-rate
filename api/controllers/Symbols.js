@@ -4,7 +4,7 @@ var utils = require('../../lib/Utils'),
   logger = require('../../server').logger('Sysmbols'),
   uuidv1 = require('uuid/v1');
   
-exports.code = function(req, res) {
+exports.check = function(req, res) {
     let startProcessTime = new Date();
     let uuid = uuidv1();
     let appID = typeof req.query.app_id !== 'undefined' ? req.query.app_id : "";
@@ -23,11 +23,13 @@ exports.code = function(req, res) {
         logger.info(uuid+"|Show all symbols");
     }
     else if(code in utils.code2Name){
+        let symbol = {}
+        symbol[code] = utils.code2Name[code];
         responseJson = {
             'success': true,
             'timestamp': new Date().getTime(),
             'date': utils.dateToString(new Date()),
-            'symbols': {'name': utils.code2Name[code]}
+            'symbols': symbol
         };
         logger.info(uuid+"|Symbol Found|Code:"+code+"|Name:"+utils.code2Name[code]);
     }
@@ -55,7 +57,7 @@ exports.code = function(req, res) {
             "|elapsedTime:"+(new Date().getTime()-startProcessTime.getTime())+"ms");
 }
 
-exports.name = function(req, res){
+exports.code = function(req, res){
     let startProcessTime = new Date();
     let uuid = uuidv1();
     let appID = typeof req.query.app_id !== 'undefined' ? req.query.app_id : "";
@@ -74,11 +76,13 @@ exports.name = function(req, res){
             logger.info(uuid+"|Show all symbols");
         }
         else if(name in utils.name2Code){
+            let symbol = {}
+            symbol[name] = utils.name2Code[name];
             responseJson = {
                 'success': true,
                 'timestamp': new Date().getTime(),
                 'date': utils.dateToString(new Date()),
-                'symbols': {'code': utils.name2Code[name]}
+                'symbols': symbol
             };
             logger.info(uuid+"|Symbol Found|Code:"+utils.name2Code[name]+"|Name:"+name);
         }
@@ -92,7 +96,7 @@ exports.name = function(req, res){
                     'message': 'No symbol was found.'
                 }
             };
-            logger.info(uuid+"|No symbol was found|code:"+code);
+            logger.info(uuid+"|No symbol was found|name:"+name);
         }
     if(prettyprint){
         // Pretty JSON

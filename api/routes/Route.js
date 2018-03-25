@@ -27,14 +27,14 @@ module.exports = function(app) {
     .get(convert.convert)
     .all(errorRouteHandling.methodNotAllowed);
 
-  // Code Route
-  app.route('/code/:code?')
-    .get(symbols.code)
+  // Check Supported Symbols Route
+  app.route('/check/:code?')
+    .get(symbols.check)
     .all(errorRouteHandling.methodNotAllowed);
   
-  // Name Route
-  app.route('/name/:name?')
-  .get(symbols.name)
+  // Get Symbols Code Route
+  app.route('/code/:name?')
+  .get(symbols.code)
   .all(errorRouteHandling.methodNotAllowed);
 
   // Timeserises Route
