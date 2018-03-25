@@ -9,12 +9,16 @@ Due to time limitation, there are lots of fetaure and sercuirty haven't implment
 **Feature:**
   - Fluctuation (Provide the rate changes from start date to end date, also providing higest, lowest and average rate between the timeframe)
   - Front-end GUI
+  - Change default sysmbols and base for each user
+  
 **Security:**
   - User Authenication (A unique key assigned to each API account used to authenticate with the API)
   - MongoDB SSL Connection
+  
 **Monitoring:**
   - Process Monitoring
   - API staus
+  
 **Automation**
   - Automation Data Import
   
@@ -43,3 +47,6 @@ This solution was used three tier network architecture to design.
 
 ## API Specification
 Please refer to [API Specification](api-spec.md) page.
+
+## Error Handling
+Please refer to [Error Handling](errors.md) page.
